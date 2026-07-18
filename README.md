@@ -45,7 +45,14 @@ npm run seed
 npm run dev
 ```
 
-Open `http://localhost:5173`. The API runs at `http://localhost:5000/api`.
+For local workspace commands, copy the root environment file into both applications:
+
+```bash
+cp .env apps/api/.env
+cp .env apps/web/.env
+```
+
+Open `http://localhost:5173`. The API runs at `http://localhost:5001/api`. Port 5001 avoids the macOS AirPlay Receiver service that commonly occupies port 5000.
 
 ### Run with Docker
 
@@ -87,6 +94,16 @@ Administrators can also mark an order as `cancelled`.
 npm test
 npm run build
 ```
+
+GitHub Actions runs the same tests and production builds automatically on every push and pull request to `main`.
+
+## Complete demo flow
+
+1. Start MongoDB with `docker compose up mongo -d`.
+2. Run `npm run seed`, then `npm run dev`.
+3. Register a customer, browse a menu, add items, and place an order.
+4. Sign in with the demo administrator account and update the order status.
+5. Return to the customer account and verify the status in **My Orders**.
 
 ## Suggested portfolio demo
 
