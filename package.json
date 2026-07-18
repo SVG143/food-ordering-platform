@@ -1,0 +1,17 @@
+{
+  "name": "food-ordering-platform",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Portfolio-ready MERN food ordering platform",
+  "workspaces": ["apps/*"],
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,green \"npm run dev -w @foodhub/api\" \"npm run dev -w @foodhub/web\"",
+    "build": "npm run build -w @foodhub/api && npm run build -w @foodhub/web",
+    "test": "npm run test -w @foodhub/api && npm run test -w @foodhub/web",
+    "seed": "npm run seed -w @foodhub/api"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "engines": {"node": ">=20"}
+}
